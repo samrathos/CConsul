@@ -3,41 +3,293 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us - Business Consultancy</title>
+  <title>Contact Us - Catalyst Business Consultancy</title>
   <style>
-    body { font-family: Arial, sans-serif; background-color: #f8f9fa; color: #333; }
-    header, footer { background-color: #002244; color: #fff; text-align: center; padding: 32px 0; }
-    nav { display: flex; justify-content: center; background-color: #00509e; padding: 16px 0; }
-    nav a { color: #fff; text-decoration: none; margin: 0 16px; font-weight: bold; transition: color 0.3s ease; }
-    nav a:hover { color: #ffcc00; }
-    .content { padding: 48px; text-align: center; max-width: 600px; margin: auto; }
-    form { display: flex; flex-direction: column; }
-    input, textarea { padding: 12.8px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
-    input[type="submit"] { background-color: #00509e; color: #fff; cursor: pointer; border: none; transition: background-color 0.3s; }
-    input[type="submit"]:hover { background-color: #ffcc00; }
+    :root {
+      --primary: #1a365d;
+      --secondary: #2b6cb0;
+      --accent: #f6ad55;
+      --light: #f7fafc;
+      --dark: #2d3748;
+      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--gradient);
+      color: white;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .contact-section {
+      padding: 4rem 2rem;
+      background: white;
+      min-height: calc(100vh - 300px);
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      padding: 2rem;
+      background: var(--light);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-info h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .contact-info h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+
+    .contact-method {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .icon-wrapper {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      padding: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+      font-weight: bold;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: var(--gradient);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-info {
+        order: 2;
+      }
+
+      .contact-form {
+        order: 1;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Contact Us</h1>
+    <div class="header-content">
+      <h1>Contact Us</h1>
+    </div>
   </header>
+
   <nav>
-    <a href="index.html">Home</a>
-    <a href="profile.html">Create Profile</a>
-    <a href="services.html">Services</a>
-    <a href="contact.html">Contact Us</a>
+    <div class="nav-container">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="profile.html">Create Profile</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
   </nav>
-  <section class="content">
-    <h2>Get in Touch</h2>
-    <form>
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <input type="submit" value="Send Message">
-    </form>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <div class="contact-method">
+          <div class="icon-wrapper">
+            <img src="/api/placeholder/20/20" alt="Location Icon" />
+          </div>
+          <div>
+            <h3>Visit Us</h3>
+            <p>123 Business Avenue, Suite 100<br>New York, NY 10001</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="icon-wrapper">
+            <img src="/api/placeholder/20/20" alt="Phone Icon" />
+          </div>
+          <div>
+            <h3>Call Us</h3>
+            <p>+1 (555) 123-4567<br>Mon-Fri, 9:00 AM - 6:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="icon-wrapper">
+            <img src="/api/placeholder/20/20" alt="Email Icon" />
+          </div>
+          <div>
+            <h3>Email Us</h3>
+            <p>info@catalystconsulting.com<br>support@catalystconsulting.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="submit-button">Send Message</button>
+        </form>
+      </div>
+    </div>
   </section>
+
   <footer>
-    <p>&copy; 2024 Business Consultancy. All Rights Reserved.</p>
+    <p>&copy; 2024 Catalyst Business Consultancy. All Rights Reserved.</p>
   </footer>
 </body>
 </html>
